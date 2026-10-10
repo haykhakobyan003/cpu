@@ -3,6 +3,11 @@
 #include <stdlib.h>
 
 int main(int argc, char** argv) {
+	int R0 = 0;
+    int R1 = 0;
+    int R2 = 0;
+    int R3 = 0;
+
 	FILE *f = fopen(argv[1], "r");
 
     if (f == NULL) {
@@ -28,11 +33,6 @@ int main(int argc, char** argv) {
 		count++;
     	p = strtok(NULL, " ");
 	}
-
-    int R0 = 0;
-    int R1 = 0;
-    int R2 = 0;
-    int R3 = 0;
 
     for (int i = 0; i < count; i++) {
         if (strcmp(words[i], "SET") == 0) {
