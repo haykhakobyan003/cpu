@@ -1,0 +1,1 @@
+SET R0 5 SET R1 6 ADD R0 R1 
