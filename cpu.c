@@ -15,16 +15,21 @@ int main(int argc, char** argv) {
         return 1;
     }
 
-    char line[256];
+	if (fgetc(f) == EOF) {
+    	printf("File is empty");
+	} else {
+    	rewind(f);
+	}
+
+    char line[100];
 
     while (fgets(line, sizeof(line), f) != NULL) {
-        printf("%s", line);
+        printf("%s \n", line);
     }
 
 	char words[100][100];
 	int i = 0;
 	int count = 0;
-
 	char *p = strtok(line, " ");
 
 	while (p != NULL) {
@@ -51,21 +56,98 @@ int main(int argc, char** argv) {
 	for (int i = 1; i < count; i++) {
         if (strcmp(words[i], "ADD") == 0) {
 			if (strcmp(words[i + 1], "R0") == 0 && strcmp(words[i + 2], "R1") == 0) {
-				R2 = R0 + R1;
+				R0 = R0 + R1;
 			}else if (strcmp(words[i + 1], "R1") == 0 && strcmp(words[i + 2], "R0") == 0) {
-				R2 = R1 + R0;
+				R1 = R1 + R0;
 			}else if (strcmp(words[i + 1], "R0") == 0 && strcmp(words[i + 2], "R0") == 0) {
-				R2 = R0 + R0;
+				R0 = R0 + R0;
 			}else if (strcmp(words[i + 1], "R1") == 0 && strcmp(words[i + 2], "R1") == 0) {
-				R2 = R1 + R1;
+				R1 = R1 + R1;
+			}else if (strcmp(words[i + 1], "R2") == 0 && strcmp(words[i + 2], "R3") == 0) {
+				R2 = R2 + R3;
+			}else if (strcmp(words[i + 1], "R3") == 0 && strcmp(words[i + 2], "R2") == 0) {
+				R3 = R3 + R2;
+			}else if (strcmp(words[i + 1], "R2") == 0 && strcmp(words[i + 2], "R2") == 0) {
+				R2 = R2 + R2;
+			}else if (strcmp(words[i + 1], "R3") == 0 && strcmp(words[i + 2], "R3") == 0) {
+				R3 = R3 + R3;
+			}else if (strcmp(words[i + 1], "R0") == 0 && strcmp(words[i + 2], "R2") == 0) {
+				R0 = R0 + R2;
+			}else if (strcmp(words[i + 1], "R1") == 0 && strcmp(words[i + 2], "R2") == 0) {
+				R1 = R1 + R2;
+			}else if (strcmp(words[i + 1], "R0") == 0 && strcmp(words[i + 2], "R3") == 0) {
+				R0 = R0 + R3;
+			}else if (strcmp(words[i + 1], "R1") == 0 && strcmp(words[i + 2], "R3") == 0) {
+				R1 = R1 + R3;
+			}else if (strcmp(words[i + 1], "R2") == 0 && strcmp(words[i + 2], "R0") == 0) {
+				R2 = R2 + R0;
+			}else if (strcmp(words[i + 1], "R2") == 0 && strcmp(words[i + 2], "R1") == 0) {
+				R2 = R2 + R1;
+			}else if (strcmp(words[i + 1], "R3") == 0 && strcmp(words[i + 2], "R0") == 0) {
+				R3 = R3 + R0;
+			}else if (strcmp(words[i + 1], "R3") == 0 && strcmp(words[i + 2], "R1") == 0) {
+				R3 = R3 + R1;
 			}
         }
     }
-	
-    printf("\nR0 = %d\n", R0);
-    printf("R1 = %d\n", R1);
-    printf("R2 = %d\n", R2);
-    printf("R3 = %d\n", R3);
 
+	for (int i = 1; i < count; i++) {
+        if (strcmp(words[i], "SUB") == 0) {
+			if (strcmp(words[i + 1], "R0") == 0 && strcmp(words[i + 2], "R1") == 0) {
+				R0 = R0 - R1;
+			}else if (strcmp(words[i + 1], "R1") == 0 && strcmp(words[i + 2], "R0") == 0) {
+				R1 = R1 - R0;
+			}else if (strcmp(words[i + 1], "R0") == 0 && strcmp(words[i + 2], "R0") == 0) {
+				R0 = R0 - R0;
+			}else if (strcmp(words[i + 1], "R1") == 0 && strcmp(words[i + 2], "R1") == 0) {
+				R1 = R1 - R1;
+			}else if (strcmp(words[i + 1], "R2") == 0 && strcmp(words[i + 2], "R3") == 0) {
+				R2 = R2 - R3;
+			}else if (strcmp(words[i + 1], "R3") == 0 && strcmp(words[i + 2], "R2") == 0) {
+				R3 = R3 - R2;
+			}else if (strcmp(words[i + 1], "R2") == 0 && strcmp(words[i + 2], "R2") == 0) {
+				R2 = R2 - R2;
+			}else if (strcmp(words[i + 1], "R3") == 0 && strcmp(words[i + 2], "R3") == 0) {
+				R3 = R3 - R3;
+			}else if (strcmp(words[i + 1], "R0") == 0 && strcmp(words[i + 2], "R2") == 0) {
+				R0 = R0 - R2;
+			}else if (strcmp(words[i + 1], "R1") == 0 && strcmp(words[i + 2], "R2") == 0) {
+				R1 = R1 - R2;
+			}else if (strcmp(words[i + 1], "R0") == 0 && strcmp(words[i + 2], "R3") == 0) {
+				R0 = R0 - R3;
+			}else if (strcmp(words[i + 1], "R1") == 0 && strcmp(words[i + 2], "R3") == 0) {
+				R1 = R1 - R3;
+			}else if (strcmp(words[i + 1], "R2") == 0 && strcmp(words[i + 2], "R0") == 0) {
+				R2 = R2 - R0;
+			}else if (strcmp(words[i + 1], "R2") == 0 && strcmp(words[i + 2], "R1") == 0) {
+				R2 = R2 - R1;
+			}else if (strcmp(words[i + 1], "R3") == 0 && strcmp(words[i + 2], "R0") == 0) {
+				R3 = R3 - R0;
+			}else if (strcmp(words[i + 1], "R3") == 0 && strcmp(words[i + 2], "R1") == 0) {
+				R3 = R3 - R1;
+			}
+        }
+    }
+
+	for (int i = 0; i < count; i++) {
+		if (strcmp(words[i], "PRINT") == 0) {
+			if (strcmp(words[i + 1], "R0") == 0) {
+				printf("%d\n", R0);
+			} else if (strcmp(words[i + 1], "R1") == 0) {
+				printf("%d\n", R1);
+			} else if (strcmp(words[i + 1], "R2") == 0) {
+				printf("%d\n", R2);
+			} else if (strcmp(words[i + 1], "R3") == 0) {
+				printf("%d\n", R3);
+			}
+		}
+	}
+
+	for (int i = 0; i < count; i++) {
+		if (strcmp(words[i], "HALT") == 0) {
+			exit(0);
+		}
+	}
+	
     return 0;
 }
