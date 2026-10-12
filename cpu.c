@@ -24,7 +24,7 @@ int main(int argc, char** argv) {
     char line[100];
 
     while (fgets(line, sizeof(line), f) != NULL) {
-        printf("%s \n", line);
+        // printf("%s \n", line);
     }
 
 	char words[100][100];
